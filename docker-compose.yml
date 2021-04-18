@@ -52,3 +52,7 @@ services:
 
 volumes:
   mongodbdata:
+  
+networks:
+  deploy_network_xx:
+    driver: bridge
