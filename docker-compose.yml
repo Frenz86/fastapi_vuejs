@@ -17,6 +17,10 @@ services:
       - mongodb
     ports:
       - "8010:8000"
+    networks:
+      - deploy_network_xx
+    container_name: projectxxxx-fastapi_frontend
+    
   frontend:
     build: ./frontend
     command: npm run serve
@@ -26,6 +30,10 @@ services:
       - backend
     ports:
       - "8510:8080"
+    networks:
+      - deploy_network_xx
+    container_name: projectxxxx-fastapi_backend
+    
   mongodb:
     image: mongo:4.0.8
     restart: unless-stopped
@@ -38,7 +46,9 @@ services:
       MONDODB_LOG_DIR: /dev/null
     volumes:
       - mongodbdata:/data/db
-
+    networks:
+      - deploy_network_xx
+    container_name: projectxxxx-mongodb
 
 volumes:
   mongodbdata:
